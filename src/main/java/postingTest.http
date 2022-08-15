@@ -1,0 +1,16 @@
+### Send POST request with json body
+POST http://localhost:8080/post/write
+Content-Type: application/json
+
+{
+  "title": "title01",
+  "content": "content01"
+}
+
+
+### 전체 목록 가져오기
+GET http://localhost:8080/post/getAll
+Content-Type: application/json
+
+
+###

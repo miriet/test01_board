@@ -3,6 +3,7 @@ package com.test.board.controller;
 import com.test.board.domain.Posting;
 import com.test.board.service.PostingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,7 +21,8 @@ public class PostingController {
     }
 
     @PostMapping("/write")
-    public Posting writePosting(@RequestParam Posting posting){
+    public Posting writePosting(@RequestBody Posting posting){
+        Posting temp = posting;
         return postingService.savePosting(posting);
     }
 }
