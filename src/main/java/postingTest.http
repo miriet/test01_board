@@ -1,3 +1,18 @@
+
+###
+POST http://localhost:8080/post/write
+Content-Type: application/json
+
+{
+  "title": "title_03",
+  "content": "content_03"
+}
+
+
+###
+### GET request with a header
+GET http://localhost:8080/post/getAll
+Accept: application/json
 ### Send POST request with json body
 POST http://localhost:8080/post/write
 Content-Type: application/json

@@ -46,11 +46,15 @@ public class Posting implements Serializable {
     // ----------- >>
     private String content;
 
-    @Column(name = "CREATED_DATE")
+    @Column(name = "CREATED_DATE", updatable = false)
     // ----------- << attribute.annotations@AAAAAAGCiz4ehPUMg/0= >>
     // ----------- >>
-    private LocalDateTime createdDate;
+    private LocalDateTime createdDate = LocalDateTime.now();
 
+
+    @ManyToOne
+    @JoinColumn(name = "OWNER_ID", referencedColumnName = "USER_ID")
+    private User owner;
 // ----------- << class.extras@AAAAAAGCizqVefTMQRg= >>
 // ----------- >>
 }

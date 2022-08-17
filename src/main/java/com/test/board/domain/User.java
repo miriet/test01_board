@@ -9,6 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.*;
 import java.time.*;
 
@@ -17,36 +19,51 @@ import java.time.*;
 // ----------- << imports@AAAAAAGCi7a8IPUrOn4= >>
 // ----------- >>
 
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(name = "TEST01_USER")
 // ----------- << class.annotations@AAAAAAGCi7a8IPUrOn4= >>
 // ----------- >>
-public class User {
+public class User implements Serializable {
+
+    private static final long serialVersionUID = -1949269619266645542L;
+
     // ----------- << attribute.annotations@AAAAAAGCi8baZvVVSyo= >>
     // ----------- >>
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "USER_ID")
     private Long id;
 
     // ----------- << attribute.annotations@AAAAAAGCi8clnPVcp5E= >>
     // ----------- >>
+    @Column(name = "LOGIN_ID")
     private String loginId;
 
     // ----------- << attribute.annotations@AAAAAAGCi8++uvVjXh4= >>
     // ----------- >>
+    @Column(name = "PASSWORD")
     private String password;
 
     // ----------- << attribute.annotations@AAAAAAGCi8/X1vVqlI4= >>
     // ----------- >>
+    @Column(name = "USER_NAME")
     private String userName;
 
     // ----------- << attribute.annotations@AAAAAAGCi8/1L/VxBXE= >>
     // ----------- >>
+    @Column(name = "EMAIL")
     private String email;
 
     // ----------- << attribute.annotations@AAAAAAGCi9AL7fV4uwI= >>
     // ----------- >>
-    private LocalDateTime createdDate;
+    @Column(name = "CREATED_DATE", updatable = false)
+    private LocalDateTime createdDate = LocalDateTime.now();
 
+    @OneToMany(mappedBy = "owner")
+    private Set<Posting> postings;
 // ----------- << class.extras@AAAAAAGCi7a8IPUrOn4= >>
 // ----------- >>
 }
